@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>测测你的心理年龄几岁</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif}
+body{
+  background: linear-gradient(135deg, #fef6f0, #f0e8ff);
+  color:#444;
+  padding:24px 16px;
+  min-height:100vh;
+}
+.wrap{
+  max-width:580px;
+  margin:0 auto;
+}
+.box{
+  background:#ffffff;
+  border-radius:24px;
+  padding:30px 24px;
+  box-shadow: 0 8px 30px rgba(150,130,170,0.12);
+}
+h1{
+  text-align:center;
+  font-size:24px;
+  color:#7c5d99;
+  margin-bottom:10px;
+}
+.tip{
+  text-align:center;
+  color:#999;
+  font-size:14px;
+  margin-bottom:28px;
+}
+.question{
+  display:none;
+}
+.question.active{
+  display:block;
+  animation: fadeIn 0.4s ease;
+}
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.q-title{
+  font-size:17px;
+  font-weight:500;
+  margin-bottom:20px;
+  line-height:1.6;
+}
+.opt{
+  display:block;
+  padding:15px 18px;
+  border:1px solid #e7e2f0;
+  border-radius:16px;
+  margin-bottom:12px;
+  cursor:pointer;
+  transition: all 0.25s ease;
+  background:#fcfbfe;
+}
+.opt:hover{
+  border-color:#b8a4d8;
+  background:#f7f2fc;
+}
+.opt.selected{
+  border-color:#906fc2;
+  background:#e9e1f7;
+  color:#6b489c;
+  font-weight:500;
+}
+.btn{
+  width:100%;
+  padding:15px;
+  border:none;
+  border-radius:16px;
+  background: linear-gradient(135deg, #906fc2, #b08ed6);
+  color:#fff;
+  font-size:17px;
+  margin-top:16px;
+  cursor:pointer;
+  transition:0.2s;
+}
+.btn:active{
+  transform:scale(0.97);
+}
+.result{
+  display:none;
+  text-align:center;
+  animation: fadeIn 0.5s ease;
+}
+.result-card{
+  background:linear-gradient(135deg,#f7f2fc,#fff);
+  border-radius:20px;
+  padding:28px 20px;
+  border:1px solid #e5dcf2;
+  margin-bottom:20px;
+}
+.result h2{
+  font-size:28px;
+  color:#7c5d99;
+  margin-bottom:16px;
+}
+.result-desc{
+  line-height:1.8;
+  color:#555;
+  font-size:15px;
+}
+.foot{
+  margin-top:26px;
+  font-size:12px;
+  color:#aaa;
+  line-height:1.6;
+  text-align:center;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="box">
+    <h1>测测你的心理年龄几岁</h1>
+    <div class="tip">一共10题，凭第一感觉选择</div>
+
+    <div class="question active" data-id="1">
+      <div class="q-title">1. 周末有空，你更愿意？</div>
+      <div class="opt" data-v="1">A 出门逛街、聚会热闹一下</div>
+      <div class="opt" data-v="2">B 在家安安静静躺着刷手机</div>
+      <div class="opt" data-v="3">C 看书、做点自己喜欢的事</div>
+    </div>
+
+    <div class="question" data-id="2">
+      <div class="q-title">2. 遇到不顺心的事，你通常？</div>
+      <div class="opt" data-v="1">A 忍不住发脾气，情绪写脸上</div>
+      <div class="opt" data-v="2">B 自己消化，不想多说</div>
+      <div class="opt" data-v="3">C 冷静分析，想办法解决</div>
+    </div>
+
+    <div class="question" data-id="3">
+      <div class="q-title">3. 对于网红新梗、新鲜事物</div>
+      <div class="opt" data-v="1">A 很感兴趣，主动去了解</div>
+      <div class="opt" data-v="2">B 随缘，刷到就看看</div>
+      <div class="opt" data-v="3">C 不太感兴趣，觉得麻烦</div>
+    </div>
+
+    <div class="question" data-id="4">
+      <div class="q-title">4. 做决定的时候，你？</div>
+      <div class="opt" data-v="1">A 凭感觉，冲动选择</div>
+      <div class="opt" data-v="2">B 纠结很久，容易犹豫</div>
+      <div class="opt" data-v="3">C 权衡利弊，快速定下来</div>
+    </div>
+
+    <div class="question" data-id="5">
+      <div class="q-title">5. 和别人产生矛盾，你会？</div>
+      <div class="opt" data-v="1">A 当场争辩，争对错</div>
+      <div class="opt" data-v="2">B 冷处理，不想吵架</div>
+      <div class="opt" data-v="3">C 好好沟通，求同存异</div>
+    </div>
+
+    <div class="question" data-id="6">
+      <div class="q-title">6. 你对未来的想法？</div>
+      <div class="opt" data-v="1">A 走一步看一步，开心最重要</div>
+      <div class="opt" data-v="2">B 偶尔焦虑，不太确定</div>
+      <div class="opt" data-v="3">C 有清晰规划，稳步往前走</div>
+    </div>
+
+    <div class="question" data-id="7">
+      <div class="q-title">7. 别人评价你，你会？</div>
+      <div class="opt" data-v="1">A 很在意，容易被影响心情</div>
+      <div class="opt" data-v="2">B 听一听，心里想想</div>
+      <div class="opt" data-v="3">C 不太在意，清楚自己是什么样</div>
+    </div>
+
+    <div class="question" data-id="8">
+      <div class="q-title">8. 花钱的时候，你？</div>
+      <div class="opt" data-v="1">A 喜欢就买，及时行乐</div>
+      <div class="opt" data-v="2">B 偶尔冲动，大部分时候克制</div>
+      <div class="opt" data-v="3">C 理性消费，做好储蓄</div>
+    </div>
+
+    <div class="question" data-id="9">
+      <div class="q-title">9. 你更相信？</div>
+      <div class="opt" data-v="1">A 直觉、缘分和感觉</div>
+      <div class="opt" data-v="2">B 一半感性一半理性</div>
+      <div class="opt" data-v="3">C 现实和逻辑</div>
+    </div>
+
+    <div class="question" data-id="10">
+      <div class="q-title">10. 累的时候，你希望？</div>
+      <div class="opt" data-v="1">A 找人陪伴倾诉</div>
+      <div class="opt" data-v="2">B 自己安静待一会</div>
+      <div class="opt" data-v="3">C 调整状态，尽快恢复</div>
+    </div>
+
+    <div class="result">
+      <div class="result-card">
+        <h2 id="age"></h2>
+        <div class="result-desc" id="desc"></div>
+      </div>
+      <button class="btn" onclick="restart()">重新测试</button>
+    </div>
+
+    <button class="btn" id="nextBtn" onclick="next()">下一题</button>
+
+    <div class="foot">免责声明：本测试仅为趣味娱乐参考，不具备专业心理评估效力，不能作为心理诊断依据。</div>
+  </div>
+</div>
+
+<script>
+let current = 1;
+let score = 0;
+const total = 10;
+const qs = document.querySelectorAll('.question');
+const nextBtn = document.getElementById('nextBtn');
+const resultBox = document.querySelector('.result');
+
+document.querySelectorAll('.opt').forEach(opt=>{
+  opt.onclick = ()=>{
+    const parent = opt.parentElement;
+    parent.querySelectorAll('.opt').forEach(o=>o.classList.remove('selected'));
+    opt.classList.add('selected');
+    score += Number(opt.dataset.v);
+  }
+})
+
+function next(){
+  const curQ = document.querySelector(`.question[data-id="${current}"]`);
+  if(!curQ.querySelector('.opt.selected')){alert("请选择一项答案");return}
+  current++;
+  if(current>total){
+    showResult();
+    return;
+  }
+  curQ.classList.remove('active');
+  document.querySelector(`.question[data-id="${current}"]`).classList.add('active');
+}
+
+function showResult(){
+  document.querySelector('.question.active').classList.remove('active');
+  nextBtn.style.display = 'none';
+  resultBox.style.display = 'block';
+  let age,desc;
+  if(score<=14){
+    age = "心理年龄：12～18岁";
+    desc = "内心还保留着少年感，天真热烈，喜欢新鲜事物，情绪直白，敢爱敢恨。虽然偶尔冲动，但活得很真诚。";
+  }else if(score<=22){
+    age = "心理年龄：19～28岁";
+    desc = "青春和成熟并存，有热血也开始学着权衡。一边向往自由，一边慢慢学着承担责任，是很舒服的状态。";
+  }else if(score<=28){
+    age = "心理年龄：29～40岁";
+    desc = "内心稳重通透，情绪稳定，懂得接纳自己。不会轻易被外界评价裹挟，清楚自己想要什么，温柔且有力量。";
+  }else{
+    age = "心理年龄：40岁+";
+    desc = "心态淡然从容，看透很多事情。不喜争辩，向内生活，更看重安宁、健康和简单长久的关系，松弛感拉满。";
+  }
+  document.getElementById('age').innerText = age;
+  document.getElementById('desc').innerText = desc;
+}
+
+function restart(){
+  current=1;score=0;
+  resultBox.style.display='none';
+  nextBtn.style.display='block';
+  qs.forEach(q=>q.classList.remove('active'));
+  qs[0].classList.add('active');
+  document.querySelectorAll('.opt').forEach(o=>o.classList.remove('selected'));
+}
+</script>
+</body>
+</html>
